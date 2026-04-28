@@ -39,6 +39,17 @@
                 android:layout_weight="1" />
 
             <ImageButton
+                android:id="@+id/writeButton"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="16dp"
+                android:background="@color/transparent"
+                android:contentDescription="@string/title_deepl_write"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/ic_deepl_write" />
+
+            <ImageButton
                 android:id="@+id/settingButton"
                 android:layout_width="28dp"
                 android:layout_height="28dp"

@@ -35,6 +35,7 @@ class MainActivity : AppCompatActivity() {
 
         initializeWebView()
         createWebView(intent, savedInstanceState)
+        setupWriteButton()
         setupSettingsButton()
     }
 
@@ -131,6 +132,28 @@ class MainActivity : AppCompatActivity() {
         } catch (e: Exception) {
             Log.w("MainActivity", "Cookie setup failed", e)
         }
+    }
+
+    private fun setupWriteButton() {
+        val button = findViewById<ImageButton>(R.id.writeButton)
+        updateWriteButtonIcon(button)
+        button.setOnClickListener {
+            val urlParam = getSharedPreferences("config", Context.MODE_PRIVATE)
+                .getString("urlParam", "#en/en/") ?: "#en/en/"
+            val isCurrentlyWrite = startUrl.contains("/write")
+            val newPageType = if (isCurrentlyWrite) "translator" else "write"
+            val newUrl = "https://www.deepl.com/$newPageType$urlParam"
+            startUrl = newUrl
+            webView.loadUrl(newUrl)
+            updateWriteButtonIcon(button)
+        }
+    }
+
+    private fun updateWriteButtonIcon(button: ImageButton) {
+        val isWrite = startUrl.contains("/write")
+        button.setImageResource(
+            if (isWrite) R.drawable.ic_deepl_translate else R.drawable.ic_deepl_write
+        )
     }
 
     /**

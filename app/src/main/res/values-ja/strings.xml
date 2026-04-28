@@ -4,6 +4,7 @@
     <string name="copy_clipboard">テキストをコピーしました</string>
     <string name="network_err">DeepLサーバーへの接続に失敗しました</string>
     <string name="title_activity_settings">設定</string>
+    <string name="title_deepl_write">DeepL Write</string>
     <string name="themeSettings">テーマの設定</string>
     <string name="theme">テーマ</string>
     <string name="theme_light">ライト</string>

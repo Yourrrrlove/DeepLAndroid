@@ -12,6 +12,7 @@
         'div[aria-labelledby="app-stores-banner-description"]',
         'aside',
         'nav:has([data-testid="storefront-tabs-mobile-icon-text"])',
+        'nav:has([aria-labelledby="product-navigation-mobile-bar-translator-link"])',
     ].join(',');
 
     const style = document.createElement('style');
