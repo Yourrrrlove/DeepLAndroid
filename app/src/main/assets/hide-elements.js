@@ -11,6 +11,7 @@
         'div[id="cookieBanner"]',
         'div[aria-labelledby="app-stores-banner-description"]',
         'aside',
+        'nav:has([data-testid="storefront-tabs-mobile-icon-text"])',
     ].join(',');
 
     const style = document.createElement('style');
