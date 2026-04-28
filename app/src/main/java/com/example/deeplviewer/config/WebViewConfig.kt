@@ -10,6 +10,7 @@ object WebViewConfig {
         webView.settings.apply {
             javaScriptEnabled = true
             domStorageEnabled = true
+            setSupportMultipleWindows(true)
 
             // cache settings
             cacheMode = WebSettings.LOAD_DEFAULT

@@ -16,6 +16,8 @@ import com.example.deeplviewer.R
 import com.example.deeplviewer.config.WebViewConfig
 import com.example.deeplviewer.helper.CookieManagerHelper
 import com.example.deeplviewer.helper.UrlHelper
+import com.example.deeplviewer.webview.MyWebChromeClient
+import com.example.deeplviewer.webview.MyWebChromeClient.Companion.DEEPL_INTERNAL_REGEX
 import com.example.deeplviewer.webview.MyWebViewClient
 import com.example.deeplviewer.webview.WebAppInterface
 
@@ -118,6 +120,7 @@ class MainActivity : AppCompatActivity() {
     private fun setupWebViewClient() {
         webViewClient = MyWebViewClient(this)
         webView.webViewClient = webViewClient
+        webView.webChromeClient = MyWebChromeClient(webView)
     }
 
     /**
@@ -173,9 +176,7 @@ class MainActivity : AppCompatActivity() {
         val webView: WebView = findViewById(R.id.webview)
         val url = webView.url ?: ""
 
-        // Extract the page type 'translator' or 'write' from the URL
-        val pageTypeRegex = Regex("^https://www\\.deepl\\.com/.*/(translator|write).*$")
-        val pageTypeMatch = pageTypeRegex.find(url)
+        val pageTypeMatch = DEEPL_INTERNAL_REGEX.find(url)
         val pageType = pageTypeMatch?.groupValues?.get(1)
 
         pageType?.let {

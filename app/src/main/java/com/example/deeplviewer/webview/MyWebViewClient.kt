@@ -20,6 +20,7 @@ import androidx.webkit.WebViewFeature
 import com.example.deeplviewer.R
 import com.example.deeplviewer.activity.MainActivity
 import androidx.core.content.edit
+import com.example.deeplviewer.webview.MyWebChromeClient.Companion.DEEPL_INTERNAL_REGEX
 
 class MyWebViewClient(
     private val activity: Activity,
@@ -31,10 +32,7 @@ class MyWebViewClient(
 
     override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
         val url = request?.url.toString()
-        val regex = Regex("^https://www\\.deepl\\.com/.*/(translator|write).*$")
-        val isDeepLTranslatorUrl = regex.matches(url)
-
-        return !isDeepLTranslatorUrl
+        return !DEEPL_INTERNAL_REGEX.matches(url)
     }
 
     override fun onPageStarted(view: WebView, url: String, favicon: Bitmap?) {
